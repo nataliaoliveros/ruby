@@ -1,7 +1,17 @@
 <h1>Mis Tareas</h1>
 
-<ul>
+<table class="table table-hover">
+	<thead class="thead-dark">
+		<th>Tarea</th>
+		<th>Editar</th>
+		<th>Eliminar</th>
+	</thead>
 	<% @tareas.each do |tarea|%>
-	<li><%=tarea.titulo%></li>
+	<tr>
+		<td><%= link_to tarea.titulo, tarea %></td>
+		<td><%= link_to "editar", edit_tarea_path(tarea), class: "btn btn-warning"%>
+		<td><%= link_to "Eliminar", tarea, method: "delete", data: {confirm: "¿estas seguro?"}, class: "btn btn-danger" %></td>
+	</tr>	
+
 	<% end %>
-</ul>
+</table>
