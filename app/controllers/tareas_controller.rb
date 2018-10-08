@@ -1,6 +1,7 @@
 class TareasController < ApplicationController
 
-	before_action :set_tarea, except:[:index, :new, :create]
+	before_action :authenticate_usuario!, except: [:index, :show]
+	before_action :set_tarea, except: [:index, :new, :create]
 
   def index
   	@tareas = Tarea.all 
@@ -13,7 +14,7 @@ end
 
 def create
 	@tarea = Tarea.new(tarea_params)
-
+	@tarea.usuario = current_usuario
 	if @tarea.save
 	#instert into tareas(titulo,descripcion) values (formulario)
 	redirect_to @tarea #action show
