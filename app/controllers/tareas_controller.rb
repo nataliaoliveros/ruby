@@ -24,6 +24,7 @@ else
 end
 
 	def show
+		@comentario = Comentario.new
 		
 		#select * from tareas where id=
 end
